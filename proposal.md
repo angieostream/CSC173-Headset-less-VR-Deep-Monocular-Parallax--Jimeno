@@ -11,10 +11,11 @@
 **Motivation:** This project aims to bridge the gap by developing a "Window Effect" interface. By leveraging Deep Learning to track head position in real-time, standard 2D monitors can behave like 3D holographic displays. This adds immersion to the desktop experience, potentially serving as a "focus tool" that visually locks the user's attention to their workspace during study sessions.
 
 ## 3. Objectives
-* **Deep Learning Pipeline:** Implement a low-latency face tracking system using **MediaPipe Face Mesh** to infer 468 facial landmarks from a monocular webcam feed.
-* **Geometric Solving:** Develop a mapping algorithm (using Perspective-n-Point or relative centroid logic) to translate 2D facial coordinates into a 6-DoF (Degrees of Freedom) camera vector.
-* **Immersive Rendering:** transmit these vectors via OSC (Open Sound Control) to a rendering engine (TouchDesigner/Godot) to update the camera frustum in real-time, creating motion parallax.
-* **Validation:** Evaluate the system's stability by measuring jitter/noise across different lighting conditions and head angles.
+* **Deep Learning Pipeline:** Implement a low-latency face tracking system using **MediaPipe Face Mesh** to infer 468 facial landmarks from a standard webcam feed.
+* **Coordinate Mapping:** Develop a logic system to translate 2D facial landmarks into 3D camera movements (X, Y, Z position and rotation), converting the user's head movements into a virtual camera vector.
+* **Immersive Rendering:** Transmit these vectors via OSC (Open Sound Control) to a rendering engine (TouchDesigner/Godot) to update the viewing perspective in real-time, creating the motion parallax effect.
+* **Validation:** Evaluate the system's stability by measuring signal noise (jitter) across different lighting conditions and head angles to ensure a smooth user experience.
+
 
 ## 4. Dataset Plan
 * **Primary Source:** I will utilize the pre-trained **Google MediaPipe Face Mesh model**, which was trained on over 30,000 "in-the-wild" images with annotated 3D mesh coordinates.
