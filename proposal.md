@@ -1,6 +1,6 @@
 # Project Proposal: Headset-less VR (Deep Monocular Parallax)
 
-**Student:** [Your Name]
+**Student:** Angelyn Jimeno
 **Date:** December 11, 2025
 
 ## 1. Project Title
