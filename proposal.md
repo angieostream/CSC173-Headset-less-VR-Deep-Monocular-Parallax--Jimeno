@@ -13,7 +13,7 @@
 ## 3. Objectives
 * **Deep Learning Pipeline:** Implement a low-latency face tracking system using **MediaPipe Face Mesh** to infer 468 facial landmarks from a standard webcam feed.
 * **Coordinate Mapping:** Develop a logic system to translate 2D facial landmarks into 3D camera movements (X, Y, Z position and rotation), converting the user's head movements into a virtual camera vector.
-* **Immersive Rendering:** Transmit these vectors via OSC (Open Sound Control) to a rendering engine (TouchDesigner/Godot) to update the viewing perspective in real-time, creating the motion parallax effect.
+* **Python-Based Rendering:** Integrate the tracking loop with a Python 3D library (e.g., PyOpenGL or Ursina) to dynamically update the view matrix and render the parallax effect within a single application window.
 * **Validation:** Evaluate the system's stability by measuring signal noise (jitter) across different lighting conditions and head angles to ensure a smooth user experience.
 
 
@@ -24,11 +24,11 @@
 ## 5. Technical Approach
 * **Architecture:**
     * **Input:** 720p Webcam Stream (RGB).
-    * **Inference:** MediaPipe Attention Mesh (MobileNetV2 backbone).
-    * **Logic:** Python script calculates relative head position $(x, y, z)$.
-    * **Output:** OSC messages (`/head/x`, `/head/y`) sent to the 3D Engine.
-* **Hardware:** Standard Consumer Laptop (CPU inference).
-* **Frameworks:** Python, OpenCV, MediaPipe, TouchDesigner (for visualization).
+    * **Inference:** MediaPipe Face Mesh (running on CPU).
+    * **Logic:** Python script converts face position to 3D coordinates.
+    * **Rendering:** The same script updates the camera perspective in **PyOpenGL/Ursina** every frame.
+* **Hardware:** Standard Consumer Laptop.
+* **Frameworks:** Python, OpenCV, MediaPipe, PyOpenGL (or Ursina Engine).
 
 ## 6. Expected Challenges & Mitigations
 * **Jitter (Noise):** Neural network predictions fluctuate frame-to-frame.
